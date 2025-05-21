@@ -1,5 +1,5 @@
 import React from 'react';
-import './AboutUs.css';
+import './Aboutus.css';
 import ayush_agrawal from '../assets/ayush_agrawal.jpeg';
 
 const AboutUs = () => {
