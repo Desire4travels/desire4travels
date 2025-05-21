@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './TermsAndConditions.css';
+import './TermsandConditions.css';
 
 const termsData = [
   {
