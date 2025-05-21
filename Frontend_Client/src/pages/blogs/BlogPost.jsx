@@ -36,7 +36,7 @@
 //     e.preventDefault();
 //     setError('');
 //     try {
-//       await axios.post('http://localhost:3000/blog-feedback', formData);
+//       await axios.post('https://desire4travels-1.onrender.com/blog-feedback', formData);
 //       setSubmitted(true);
 //     } catch (err) {
 //       console.error(err);
@@ -49,12 +49,12 @@
 //   useEffect(() => {
 //     const fetchBlog = async () => {
 //       try {
-//         const res = await fetch(`http://localhost:3000/blogs/${id}`);
+//         const res = await fetch(`https://desire4travels-1.onrender.com/blogs/${id}`);
 //         if (!res.ok) throw new Error('Blog not found');
 //         const data = await res.json();
 //         setBlog(data);
 
-//         const simRes = await fetch(`http://localhost:3000/blogs`);
+//         const simRes = await fetch(`https://desire4travels-1.onrender.com/blogs`);
 //         const allBlogs = await simRes.json();
 //         const filtered = allBlogs
 //           .filter(b => b.category === data.category && b.id !== id)
@@ -117,14 +117,14 @@
 //         <meta name="description" content={cleanExcerpt} />
 
 //         {/* Canonical URL */}
-//         <link rel="canonical" href={`http://localhost:3000/blogs/${id}`} />
+//         <link rel="canonical" href={`https://desire4travels-1.onrender.com/blogs/${id}`} />
 
 //         {/* Open Graph / Facebook */}
 //         <meta property="og:type" content="article" />
 //         <meta property="og:title" content={blog.title} />
 //         <meta property="og:description" content={cleanExcerpt} />
 //         <meta property="og:image" content={`http://localhost:3000${blog.image}`} />
-//         <meta property="og:url" content={`http://localhost:3000/blogs/${id}`} />
+//         <meta property="og:url" content={`https://desire4travels-1.onrender.com/blogs/${id}`} />
 //         <meta property="og:site_name" content="Your Blog Name" />
 
 //         {/* Twitter */}
@@ -339,7 +339,7 @@ const BlogPost = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/api/plan-trip', {
+      const response = await fetch('https://desire4travels-1.onrender.com/api/plan-trip', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -369,12 +369,12 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/blogs/${id}`);
+        const res = await fetch(`https://desire4travels-1.onrender.com/blogs/${id}`);
         if (!res.ok) throw new Error('Blog not found');
         const data = await res.json();
         setBlog(data);
 
-        const simRes = await fetch(`http://localhost:3000/blogs`);
+        const simRes = await fetch(`https://desire4travels-1.onrender.com/blogs`);
         const allBlogs = await simRes.json();
         const filtered = allBlogs
           .filter(b => b.category === data.category && b.id !== id)
@@ -437,14 +437,14 @@ const BlogPost = () => {
         <meta name="description" content={cleanExcerpt} />
 
         {/* Canonical URL */}
-        <link rel="canonical" href={`http://localhost:3000/blogs/${id}`} />
+        <link rel="canonical" href={`https://desire4travels-1.onrender.com/blogs/${id}`} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content={blog.title} />
         <meta property="og:description" content={cleanExcerpt} />
         <meta property="og:image" content={`http://localhost:3000${blog.image}`} />
-        <meta property="og:url" content={`http://localhost:3000/blogs/${id}`} />
+        <meta property="og:url" content={`https://desire4travels-1.onrender.com/blogs/${id}`} />
         <meta property="og:site_name" content="Your Blog Name" />
 
         {/* Twitter */}

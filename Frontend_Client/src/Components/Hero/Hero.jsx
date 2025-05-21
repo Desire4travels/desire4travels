@@ -49,7 +49,7 @@ const Hero = ({ heroData, setHeroCount, heroCount, planTripRef }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3000/enquiry', {
+      const res = await fetch('https://desire4travels-1.onrender.com/enquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

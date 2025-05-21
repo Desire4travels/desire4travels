@@ -11,7 +11,7 @@ const TripTypePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/destinations')
+    fetch('https://desire4travels-1.onrender.com/api/destinations')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch destinations');
         return res.json();
@@ -58,7 +58,7 @@ const TripTypePage = () => {
           destinations.map(dest => (
             <DestinationCard
               key={dest.id}
-              imgSrc={`http://localhost:3000/uploads/${dest.image}`}
+              imgSrc={`https://desire4travels-1.onrender.com/uploads/${dest.image}`}
               title={dest.name}
               location={dest.state}
               tripType={dest.type}

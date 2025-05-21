@@ -5,7 +5,7 @@
 
 //   useEffect(() => {
 //     const fetchTrips = async () => {
-//       const url = "http://localhost:3000/api/upcoming-trips";
+//       const url = "https://desire4travels-1.onrender.com/api/upcoming-trips";
 //       console.log("🌐 Attempting to fetch upcoming trips from:", url);
 
 //       try {
@@ -64,7 +64,7 @@ const UpcomingTrip = () => {
 
   useEffect(() => {
     const fetchTrips = async () => {
-      const url = "http://localhost:3000/api/upcoming-trips";
+      const url = "https://desire4travels-1.onrender.com/api/upcoming-trips";
       console.log("🌐 Attempting to fetch upcoming trips from:", url);
 
       try {

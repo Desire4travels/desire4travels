@@ -39,7 +39,7 @@ const AdminCustomQuotes = () => {
   useEffect(() => {
     const fetchQuotes = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/admin/custom-quotes');
+        const res = await axios.get('https://desire4travels-1.onrender.com/api/admin/custom-quotes');
         setQuotes(res.data);
       } catch (err) {
         setError('Failed to fetch custom quotes');

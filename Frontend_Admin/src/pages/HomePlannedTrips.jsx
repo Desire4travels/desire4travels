@@ -7,7 +7,7 @@ const HomePlannedTrips = () => {
   useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/admin/planned-trips');
+        const res = await fetch('https://desire4travels-1.onrender.com/api/admin/planned-trips');
         const data = await res.json();
         setTrips(data);
       } catch (err) {

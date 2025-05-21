@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AdminUpcomingTrip.css';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://desire4travels-1.onrender.com/api';
 
 function AdminUpcomingTrip() {
   const [allPackages, setAllPackages] = useState([]);

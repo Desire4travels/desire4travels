@@ -34,7 +34,7 @@ const PackageCard = ({ id, imgSrc, packageName, destinations, price, duration })
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/callback-package', {
+      const response = await fetch('https://desire4travels-1.onrender.com/callback-package', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

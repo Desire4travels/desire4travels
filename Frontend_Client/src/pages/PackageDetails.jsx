@@ -26,7 +26,7 @@ const PackageDetails = () => {
   useEffect(() => {
     const fetchPackageDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/packages/${packageId}`);
+        const response = await axios.get(`https://desire4travels-1.onrender.com/api/packages/${packageId}`);
         setPackageData(response.data);
       } catch (err) {
         setError("Failed to load package details.");
@@ -74,7 +74,7 @@ const PackageDetails = () => {
         ...formData,
         packageName: packageData.packageName,  // Important: send packageName here
       };
-      await axios.post("http://localhost:3000/api/custom-quotes", payload);
+      await axios.post("https://desire4travels-1.onrender.com/api/custom-quotes", payload);
       alert("Request submitted successfully!");
       setShowQuoteForm(false);
       setFormData({ name: "", mobile: "", travelers: "", date: "" });

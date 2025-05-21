@@ -8,7 +8,7 @@ const AdminEnquiries = () => {
   useEffect(() => {
     const fetchEnquiries = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/admin/enquiries');
+        const res = await fetch('https://desire4travels-1.onrender.com/api/admin/enquiries');
         const data = await res.json();
         setEnquiries(data);
       } catch (err) {

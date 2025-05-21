@@ -34,7 +34,7 @@ const [showSuccessTick, setShowSuccessTick] = useState(false);
   //   e.preventDefault();
 
   //   try {
-  //     const response = await fetch('http://localhost:3000/callback-destination', {
+  //     const response = await fetch('https://desire4travels-1.onrender.com/callback-destination', {
   //       method: 'POST',
   //       headers: {
   //         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await fetch('http://localhost:3000/callback-destination', {
+    const response = await fetch('https://desire4travels-1.onrender.com/callback-destination', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

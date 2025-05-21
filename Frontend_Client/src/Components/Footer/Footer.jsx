@@ -29,7 +29,7 @@ const Footer = () => {
     setMessage('');
 
     try {
-      const res = await axios.post('http://localhost:3000/api/newsletter', { email });
+      const res = await axios.post('https://desire4travels-1.onrender.com/api/newsletter', { email });
       setMessage(res.data.message || 'Subscribed successfully!');
       setEmail('');
     } catch (error) {

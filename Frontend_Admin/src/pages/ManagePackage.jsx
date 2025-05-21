@@ -26,7 +26,7 @@ const ManagePackage = () => {
   // Fetch existing packages
   const fetchPackages = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/admin/packages');
+      const res = await fetch('https://desire4travels-1.onrender.com/api/admin/packages');
       const data = await res.json();
       setPackages(data);
     } catch (error) {
@@ -37,7 +37,7 @@ const ManagePackage = () => {
   // Fetch destinations, adapted to your API response structure
   const fetchDestinations = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/destinations');
+      const res = await fetch('https://desire4travels-1.onrender.com/api/destinations');
       const data = await res.json();
 
       console.log('Destinations fetched:', data);
@@ -93,8 +93,8 @@ const ManagePackage = () => {
     });
 
     const url = editingId
-      ? `http://localhost:3000/api/admin/packages/${editingId}`
-      : 'http://localhost:3000/api/admin/packages';
+      ? `https://desire4travels-1.onrender.com/api/admin/packages/${editingId}`
+      : 'https://desire4travels-1.onrender.com/api/admin/packages';
 
     try {
       const res = await fetch(url, {
@@ -145,7 +145,7 @@ const ManagePackage = () => {
     if (!window.confirm('Are you sure you want to delete this package?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/packages/${id}`, {
+      const res = await fetch(`https://desire4travels-1.onrender.com/api/admin/packages/${id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error('Failed to delete package');

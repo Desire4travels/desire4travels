@@ -9,7 +9,7 @@ const Destination = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/destinations')
+    fetch('https://desire4travels-1.onrender.com/api/destinations')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
@@ -40,7 +40,7 @@ const Destination = () => {
           destinations.map((dest) => (
             <DestinationCard
               key={dest.id}
-              imgSrc={`http://localhost:3000/uploads/${dest.image}`}
+              imgSrc={`https://desire4travels-1.onrender.com/uploads/${dest.image}`}
               title={`${dest.name}-${dest.state}`} // this is important!
               location={dest.state}
               tripType={dest.type}  // type is an array

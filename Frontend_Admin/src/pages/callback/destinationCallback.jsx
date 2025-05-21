@@ -15,7 +15,7 @@ const destinationCallback = () => {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:3000/callback-destination'); // Ensure the endpoint is correct
+      const res = await axios.get('https://desire4travels-1.onrender.com/callback-destination'); // Ensure the endpoint is correct
       setContacts(res.data);
       setLoading(false);
     } catch (error) {
@@ -27,7 +27,7 @@ const destinationCallback = () => {
   // Mark a contact as called
   const markAsCalled = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/callback-destination/${id}`, { called: true });
+      await axios.put(`https://desire4travels-1.onrender.com/callback-destination/${id}`, { called: true });
       fetchContacts(); // Refresh the list after updating
     } catch (error) {
       console.error('Failed to mark as called', error);

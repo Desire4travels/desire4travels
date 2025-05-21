@@ -8,7 +8,7 @@
 //   useEffect(() => {
 //     const fetchPackages = async () => {
 //       try {
-//         const res = await fetch("http://localhost:3000/api/packages");
+//         const res = await fetch("https://desire4travels-1.onrender.com/api/packages");
 //         const data = await res.json();
 //         setPackages(data);
 //       } catch (error) {
@@ -58,7 +58,7 @@ const Package = () => {
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/packages");
+        const res = await fetch("https://desire4travels-1.onrender.com/api/packages");
         const data = await res.json();
         setPackages(data);
       } catch (error) {

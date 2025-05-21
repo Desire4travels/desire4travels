@@ -10,7 +10,7 @@ const NewsletterAdmin = () => {
   useEffect(() => {
     const fetchSubscribers = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/admin/newsletter');
+        const res = await axios.get('https://desire4travels-1.onrender.com/api/admin/newsletter');
         setSubscribers(res.data); 
       } catch (err) {
         setError('Failed to load subscribers.');

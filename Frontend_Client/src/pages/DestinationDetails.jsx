@@ -39,7 +39,7 @@ const DestinationDetail = () => {
       try {
         setError(null);
 
-        const res = await fetch(`http://localhost:3000/api/packages`);
+        const res = await fetch(`https://desire4travels-1.onrender.com/api/packages`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const allPackages = await res.json();
@@ -69,7 +69,7 @@ const DestinationDetail = () => {
       try {
         setDestInfoError(null);
 
-        const res = await fetch(`http://localhost:3000/api/admin/destinations`);
+        const res = await fetch(`https://desire4travels-1.onrender.com/api/admin/destinations`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const destinations = await res.json();
@@ -100,7 +100,7 @@ const DestinationDetail = () => {
       {destinationInfo && (
         <div className="destination-info">
           <img
-            src={`http://localhost:3000/uploads/${destinationInfo.image}`}
+            src={`https://desire4travels-1.onrender.com/uploads/${destinationInfo.image}`}
             alt={destinationInfo.name}
             className="destination-image destination-image-desktop"
             style={{ height: '300px'}}

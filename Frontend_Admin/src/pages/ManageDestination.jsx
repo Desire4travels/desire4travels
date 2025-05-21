@@ -20,7 +20,7 @@ const ManageDestination = () => {
 
   const fetchDestinations = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/admin/destinations');
+      const res = await fetch('https://desire4travels-1.onrender.com/api/admin/destinations');
       const data = await res.json();
       setDestinations(data);
     } catch (error) {
@@ -60,8 +60,8 @@ const ManageDestination = () => {
     });
 
     const endpoint = editingId
-      ? `http://localhost:3000/api/admin/destinations/${editingId}`
-      : 'http://localhost:3000/api/admin/destinations';
+      ? `https://desire4travels-1.onrender.com/api/admin/destinations/${editingId}`
+      : 'https://desire4travels-1.onrender.com/api/admin/destinations';
     const method = editingId ? 'PUT' : 'POST';
 
     try {
@@ -99,14 +99,14 @@ const ManageDestination = () => {
       image: null,
       description: dest.description || '', // ✅ Set description
     });
-    setPreviewImage(`http://localhost:3000/uploads/${dest.image}`);
+    setPreviewImage(`https://desire4travels-1.onrender.com/uploads/${dest.image}`);
     setEditingId(dest.id);
   };
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this destination?')) return;
     try {
-      const res = await fetch(`http://localhost:3000/api/admin/destinations/${id}`, {
+      const res = await fetch(`https://desire4travels-1.onrender.com/api/admin/destinations/${id}`, {
         method: 'DELETE',
       });
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -230,7 +230,7 @@ const ManageDestination = () => {
             <tr key={dest.id}>
               <td>
                 <img
-                  src={`http://localhost:3000/uploads/${dest.image}`}
+                  src={`https://desire4travels-1.onrender.com/uploads/${dest.image}`}
                   alt={dest.name}
                   height="50"
                 />

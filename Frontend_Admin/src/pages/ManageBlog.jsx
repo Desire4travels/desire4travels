@@ -130,7 +130,7 @@
 // import axios from "axios";
 // import "./ManageBlog.css";
 
-// const API_BASE_URL = "http://localhost:3000/blogs";
+// const API_BASE_URL = "https://desire4travels-1.onrender.com/blogs";
 
 // const Blog = () => {
 //   const [blogs, setBlogs] = useState([]);
@@ -461,7 +461,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ManageBlog.css";
 
-const API_BASE_URL = "http://localhost:3000/blogs";
+const API_BASE_URL = "https://desire4travels-1.onrender.com/blogs";
 
 const slugify = (text) => {
   return text.toString().toLowerCase()

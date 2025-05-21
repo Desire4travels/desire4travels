@@ -27,7 +27,7 @@ const PlanTrip = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/api/plan-trip', {
+      const response = await fetch('https://desire4travels-1.onrender.com/api/plan-trip', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

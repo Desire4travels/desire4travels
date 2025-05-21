@@ -38,7 +38,7 @@ const BlogList = () => {
     e.preventDefault();
     setError('');
     try {
-      await axios.post('http://localhost:3000/blog-feedback', formData);
+      await axios.post('https://desire4travels-1.onrender.com/blog-feedback', formData);
       setSubmitted(true);
     } catch (err) {
       console.error(err);
@@ -53,7 +53,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:3000/blogs');
+        const response = await fetch('https://desire4travels-1.onrender.com/blogs');
         if (!response.ok) {
           throw new Error('Failed to fetch blogs');
         }
@@ -331,7 +331,7 @@ export default BlogList;
 //   useEffect(() => {
 //     const fetchBlogs = async () => {
 //       try {
-//         const response = await fetch('http://localhost:3000/blogs');
+//         const response = await fetch('https://desire4travels-1.onrender.com/blogs');
 //         if (!response.ok) {
 //           throw new Error('Failed to fetch blogs');
 //         }
@@ -600,7 +600,7 @@ export default BlogList;
 //   useEffect(() => {
 //     const fetchBlogs = async () => {
 //       try {
-//         const response = await fetch('http://localhost:3000/blogs');
+//         const response = await fetch('https://desire4travels-1.onrender.com/blogs');
 //         if (!response.ok) {
 //           throw new Error('Failed to fetch blogs');
 //         }
