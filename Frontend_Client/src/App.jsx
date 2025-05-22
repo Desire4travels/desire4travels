@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import Hero from "./Components/Hero/Hero.jsx";
