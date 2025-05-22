@@ -13,6 +13,7 @@ import AdminCustomQuotes from './pages/AdminCustomQuotes.jsx';
 import PackageCallback from './pages/callback/packageCallback.jsx';
 import DestinationCallback from './pages/callback/destinationCallback.jsx';
 import AdminUpcomingTrip from './pages/AdminUpcomingTrip.jsx';
+import CallUs from './pages/CallUs.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,6 +33,7 @@ function App() {
         <Route path="/packageCallback" element={<PackageCallback />} />
         <Route path="/destinationCallback" element={<DestinationCallback />} />
         <Route path="/adminupcomingtrip" element={<AdminUpcomingTrip />} />
+        <Route path="/contactUs" element={<CallUs/>} />
       </Routes>
     </div>
   );

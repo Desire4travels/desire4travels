@@ -12,7 +12,7 @@ const Home = () => {
       <div className="manage-newsletter-card">
         <h1><Link to="/newsletteradmin" className="link">Manage Newsletter</Link></h1>
       </div>
-      
+
       <div className="manage-destination-card">
         <h1><Link to="/managedestination" className="link">Manage Destinations</Link></h1>
       </div>
@@ -37,7 +37,7 @@ const Home = () => {
         <h1><Link to="/packageCallback" className="link">Package Callback</Link></h1>
       </div>
 
-        <div className="manage-custom-quotes-card">
+      <div className="manage-custom-quotes-card">
         <h1><Link to="/destinationCallback" className="link">Destination Callback</Link></h1>
       </div>
 
@@ -45,10 +45,15 @@ const Home = () => {
         <h1><Link to="/adminupcomingtrip" className="link">Manage Upcoming Trips</Link></h1>
       </div>
 
+      <div className="manage-upcoming-trip-card">
+        <h1><Link to="/contactUs" className="link">Messages-Contact</Link></h1>
+      </div>
+
+
 
     </div>
 
-    
+
   );
 };
 

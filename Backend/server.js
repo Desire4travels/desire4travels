@@ -1115,6 +1115,100 @@ app.get("/api/upcoming-trips", async (req, res) => {
   res.json(trips);
 });
 
+
+
+
+
+
+// CREATE contact
+app.post('/contact-us', async (req, res) => {
+  try {
+    const { name, phoneNo, email, message } = req.body;
+
+    if (!name || !phoneNo || !email || !message) {
+      return res.status(400).json({ error: 'All fields (name, phoneNo, email, message) are required.' });
+    }
+
+    const docRef = await db.collection('contact-us').add({
+      name,
+      phoneNo,
+      email,
+      message,
+      createdAt: admin.firestore.FieldValue.serverTimestamp()
+    });
+
+    res.status(200).json({ message: 'Contact message sent successfully', id: docRef.id });
+  } catch (error) {
+    console.error('POST /contact-us ERROR:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET all contacts
+app.get('/contact-us', async (req, res) => {
+  try {
+    const snapshot = await db.collection('contact-us').get();
+    const contacts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    res.json(contacts);
+  } catch (error) {
+    console.error('GET /contact-us ERROR:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET single contact by ID
+app.get('/contact-us/:id', async (req, res) => {
+  try {
+    const doc = await db.collection('contact-us').doc(req.params.id).get();
+
+    if (!doc.exists) {
+      return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.json({ id: doc.id, ...doc.data() });
+  } catch (error) {
+    console.error('GET /contact-us/:id ERROR:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// UPDATE contact by ID
+app.put('/contact-us/:id', async (req, res) => {
+  try {
+    const { name, phoneNo, email, message } = req.body;
+    const updateData = {};
+
+    if (name) updateData.name = name;
+    if (phoneNo) updateData.phoneNo = phoneNo;
+    if (email) updateData.email = email;
+    if (message) updateData.message = message;
+
+    if (Object.keys(updateData).length === 0) {
+      return res.status(400).json({ error: 'At least one field must be provided for update.' });
+    }
+
+    await db.collection('contact-us').doc(req.params.id).update(updateData);
+
+    res.json({ message: 'Contact message updated successfully' });
+  } catch (error) {
+    console.error('PUT /contact-us/:id ERROR:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// DELETE contact by ID
+app.delete('/contact-us/:id', async (req, res) => {
+  try {
+    await db.collection('contact-us').doc(req.params.id).delete();
+    res.json({ message: 'Contact message deleted successfully' });
+  } catch (error) {
+    console.error('DELETE /contact-us/:id ERROR:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
