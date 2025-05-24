@@ -6,7 +6,6 @@ const AboutUs = () => {
   return (
     <div className="about-container">
       <h1 className="about-title">About Us</h1>
-
       <section className="about-section">
         <p>
           <strong>Desire4Travels</strong> is more than just a travel company — it’s a community built by travelers, for travelers. Founded in 2016 by <strong>Ayush Agrawal</strong>, a passionate explorer with an entrepreneurial spirit, Desire4Travels began with a simple goal: to help people experience the joy of meaningful, well-planned travel without the stress and overpricing often associated with it.

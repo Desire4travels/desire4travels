@@ -68,9 +68,9 @@ const Hero = ({ heroData, setHeroCount, heroCount, planTripRef }) => {
   };
 
   return (
-   <div className="hero-section"> {/* Add wrapper */}
+    <div className="hero-section">
       <div className="background">
-         <Background heroCount={heroCount} />
+        <Background heroCount={heroCount} />
       </div>
 
       <div className='hero'>
@@ -95,12 +95,12 @@ const Hero = ({ heroData, setHeroCount, heroCount, planTripRef }) => {
 
         <div className='enquiry-container'>
           <form className='enquiry-form' onSubmit={handleSubmit}>
-            <h2>Connect with one of our travel experts.</h2>
+            <h2>Connect with our travel expert.</h2>
             <input type="text" placeholder="Name" value={formData.name} onChange={handleChange} required />
             <input type="tel" placeholder="Phone" value={formData.phone} onChange={handleChange} required pattern="[0-9]*" inputMode="numeric" />
             <input type="text" placeholder="Where to?" value={formData.destination} onChange={handleChange} />
             <input type="number" placeholder="No. of Travelers" min="1" value={formData.travelers} onChange={handleChange} />
-            <input type="text" id="travel-date" placeholder="Travel Date" value={formData.travelDate} readOnly />
+            <input type="text" id="travel-date" name="travelDate" placeholder="Travel Date" value={formData.travelDate} />
             <button type="submit" className='enquiry-btn'>Submit</button>
           </form>
         </div>

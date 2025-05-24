@@ -41,7 +41,7 @@ const Destination = () => {
             <DestinationCard
               key={dest.id}
               imgSrc={`https://desire4travels-1.onrender.com/uploads/${dest.image}`}
-              title={`${dest.name}-${dest.state}`} // this is important!
+              title={dest.name} // this is important!
               location={dest.state}
               tripType={dest.type}  // type is an array
               rating={parseFloat(dest.rating || 0).toFixed(1)}

@@ -25,12 +25,19 @@ html, body {
   font-family: Outfit, sans-serif;
   font-size: 28px;
   font-weight: 500;
-  color: #2873a1;
+  color: #5B76D6;
 }
+
 .nav-logo span {
   color: white;
   font-size: 40px;
 }
+
+.nav-logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .nav-container {
   display: flex;
@@ -41,6 +48,11 @@ html, body {
   flex-wrap: nowrap;
 }
 
+.nav-link {
+  white-space: nowrap;
+}
+
+
 .nav-menu {
   display: flex;
   gap: 25px;
@@ -48,9 +60,11 @@ html, body {
   font-size: 18px;
   align-items: center;
   position: absolute;
-  left: 50%;
+  left: calc(50% - 500px);
   transform: translateX(-50%);
 }
+
+
 
 .nav-auth {
   display: flex;
@@ -122,20 +136,33 @@ html, body {
   border-radius: 2px;
 }
 
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     padding: 10px 20px;
     height: auto;
   }
 
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
   .hamburger {
     display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 200;
+    margin-left: 0;
+    position: static;
   }
 
   .nav-container {

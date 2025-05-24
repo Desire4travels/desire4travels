@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import './PlanTrip.css';
 import { Helmet } from "react-helmet";
 
 const PlanTrip = () => {
   const [formData, setFormData] = useState({
     destination: '',
-    startDate: null,
+    startDate: '',
     noofdays: '',
     travelers: '',
     preference: '',
@@ -17,10 +15,6 @@ const PlanTrip = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleDateChange = (date) => {
-    setFormData((prev) => ({ ...prev, startDate: date }));
   };
 
   const handleSubmit = async (e) => {
@@ -39,7 +33,7 @@ const PlanTrip = () => {
         alert('Trip planned successfully!');
         setFormData({
           destination: '',
-          startDate: null,
+          startDate: '',
           noofdays: '',
           travelers: '',
           preference: '',
@@ -57,6 +51,9 @@ const PlanTrip = () => {
   return (
     <div className="trip-container">
       <div className="trip-box">
+        <Helmet>
+          <title>Plan Your Trip</title>
+        </Helmet>
         <h2>Plan Your Trip</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -68,13 +65,12 @@ const PlanTrip = () => {
             required
           />
 
-          <DatePicker
-            selected={formData.startDate}
-            onChange={handleDateChange}
-            placeholderText="Travel Date"
-            minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
-            className="custom-datepicker"
+          <input
+            type="date"
+            name="startDate"
+            value={formData.startDate}
+            onChange={handleChange}
+            min={new Date().toISOString().split("T")[0]} // Prevent past dates
             required
           />
 

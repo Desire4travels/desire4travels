@@ -5,6 +5,7 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const sanitizeHtml = require('sanitize-html');
 require('dotenv').config();
 
 const app = express();
@@ -83,9 +84,10 @@ app.get('/api/admin/enquiries', async (req, res) => {
 });
 
 
+// POST - Create destination
 app.post('/api/admin/destinations', upload.single('image'), async (req, res) => {
   try {
-    const { name, state, type, rating, description } = req.body; // Add description
+    const { name, state, type, rating, description } = req.body;
 
     if (!name || !state || !type || !rating || !req.file || !description) {
       return res.status(400).json({ error: 'All fields are required' });
@@ -96,12 +98,19 @@ app.post('/api/admin/destinations', upload.single('image'), async (req, res) => 
       return res.status(400).json({ error: 'Rating must be between 0 and 5' });
     }
 
+    const parsedType = Array.isArray(type) ? type : [type];
+
+    const safeDescription = sanitizeHtml(description, {
+      allowedTags: ['p', 'b', 'i', 'em', 'strong', 'h1', 'h2', 'ul', 'ol', 'li', 'br'],
+      allowedAttributes: {},
+    });
+
     const newDestination = {
       name,
       state,
-      type,
+      type: parsedType,
       rating: parsedRating,
-      description,  // Save description
+      description: safeDescription,
       image: req.file.filename,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     };
@@ -109,12 +118,17 @@ app.post('/api/admin/destinations', upload.single('image'), async (req, res) => 
     const docRef = await db.collection('destinations').add(newDestination);
     res.status(201).json({ message: 'Destination added successfully', id: docRef.id });
   } catch (error) {
-    console.error('Error adding destination:', error);
+    console.error('Error adding destination:', {
+      message: error.message,
+      stack: error.stack,
+      body: req.body,
+      file: req.file,
+    });
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-
+// GET - Fetch all destinations
 app.get('/api/admin/destinations', async (req, res) => {
   try {
     const snapshot = await db.collection('destinations').get();
@@ -129,9 +143,10 @@ app.get('/api/admin/destinations', async (req, res) => {
   }
 });
 
+// PUT - Update destination
 app.put('/api/admin/destinations/:id', upload.single('image'), async (req, res) => {
   try {
-    const { name, state, type, rating, description } = req.body; // Add description
+    const { name, state, type, rating, description } = req.body;
     const destinationId = req.params.id;
 
     const destinationRef = db.collection('destinations').doc(destinationId);
@@ -143,9 +158,14 @@ app.put('/api/admin/destinations/:id', upload.single('image'), async (req, res) 
     const updates = {
       ...(name && { name }),
       ...(state && { state }),
-      ...(type && { type }),
+      ...(type && { type: Array.isArray(type) ? type : [type] }),
       ...(rating && { rating: parseFloat(rating) }),
-      ...(description && { description }),  // Update description if provided
+      ...(description && {
+        description: sanitizeHtml(description, {
+          allowedTags: ['p', 'b', 'i', 'em', 'strong', 'h1', 'h2', 'ul', 'ol', 'li', 'br'],
+          allowedAttributes: {},
+        }),
+      }),
     };
 
     if (req.file) {
@@ -155,12 +175,17 @@ app.put('/api/admin/destinations/:id', upload.single('image'), async (req, res) 
     await destinationRef.update(updates);
     res.status(200).json({ message: 'Destination updated successfully' });
   } catch (error) {
-    console.error('Error updating destination:', error);
+    console.error('Error updating destination:', {
+      message: error.message,
+      stack: error.stack,
+      body: req.body,
+      file: req.file,
+    });
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-
+// DELETE - Delete destination
 app.delete('/api/admin/destinations/:id', async (req, res) => {
   try {
     const destinationId = req.params.id;
@@ -1115,11 +1140,6 @@ app.get("/api/upcoming-trips", async (req, res) => {
   res.json(trips);
 });
 
-
-
-
-
-
 // CREATE contact
 app.post('/contact-us', async (req, res) => {
   try {
@@ -1204,6 +1224,46 @@ app.delete('/contact-us/:id', async (req, res) => {
   } catch (error) {
     console.error('DELETE /contact-us/:id ERROR:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+}
+);
+// Popup enquiry POST
+app.post('/api/popup-enquiries', async (req, res) => {
+  const { mobileNumber, destination } = req.body;
+
+  if (!mobileNumber || !destination) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const enquiryData = {
+      mobileNumber,
+      destination,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    };
+
+    await db.collection('popupEnquiries').add(enquiryData);
+
+    res.status(200).json({ message: 'Popup enquiry submitted successfully' });
+  } catch (error) {
+    console.error('Error saving popup enquiry:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+app.get('/api/admin/popup-enquiries', async (req, res) => {
+  try {
+    const snapshot = await db.collection('popupEnquiries').orderBy('createdAt', 'desc').get();
+
+    const enquiries = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    res.status(200).json(enquiries);
+  } catch (error) {
+    console.error('Error fetching popup enquiries:', error);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 

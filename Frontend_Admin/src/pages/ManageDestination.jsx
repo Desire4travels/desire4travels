@@ -8,7 +8,7 @@ const ManageDestination = () => {
     type: [],
     rating: '',
     image: null,
-    description: '', // ✅ Added description
+    description: '',
   });
   const [previewImage, setPreviewImage] = useState(null);
   const [destinations, setDestinations] = useState([]);
@@ -30,7 +30,6 @@ const ManageDestination = () => {
 
   const handleChange = (e) => {
     const { name, value, multiple, selectedOptions } = e.target;
-
     if (name === 'type' && multiple) {
       const values = Array.from(selectedOptions, option => option.value);
       setFormData(prev => ({ ...prev, type: values }));
@@ -49,15 +48,26 @@ const ManageDestination = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submitting form with data:', formData);
+
+    const ratingValue = parseFloat(formData.rating);
+    if (isNaN(ratingValue) || ratingValue < 0 || ratingValue > 5) {
+      alert('Rating must be between 0 and 5');
+      return;
+    }
 
     const data = new FormData();
     Object.keys(formData).forEach(key => {
       if (key === 'type') {
-        formData[key].forEach(type => data.append('type[]', type));
+        formData[key].forEach(type => data.append('type', type));
       } else if (formData[key]) {
         data.append(key, formData[key]);
       }
     });
+
+    for (let [key, value] of data.entries()) {
+      console.log(`FormData entry: ${key} =`, value);
+    }
 
     const endpoint = editingId
       ? `https://desire4travels-1.onrender.com/api/admin/destinations/${editingId}`
@@ -70,22 +80,24 @@ const ManageDestination = () => {
         body: data,
       });
 
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      alert(editingId ? 'Destination updated!' : 'Destination added!');
+      console.log('Server response status:', res.status);
 
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+      alert(editingId ? 'Destination updated!' : 'Destination added!');
       setFormData({
         name: '',
         state: '',
         type: [],
         rating: '',
         image: null,
-        description: '', // ✅ Reset description
+        description: '',
       });
       setPreviewImage(null);
       setEditingId(null);
       fetchDestinations();
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error submitting form:', error);
       alert('Failed to submit destination');
     }
   };
@@ -97,7 +109,7 @@ const ManageDestination = () => {
       type: dest.type || [],
       rating: dest.rating,
       image: null,
-      description: dest.description || '', // ✅ Set description
+      description: dest.description || '',
     });
     setPreviewImage(`https://desire4travels-1.onrender.com/uploads/${dest.image}`);
     setEditingId(dest.id);
@@ -167,7 +179,7 @@ const ManageDestination = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="rating">Rating (0-5)</label>
+          <label htmlFor="rating">Rating (0–5)</label>
           <input
             type="number"
             id="rating"
@@ -182,13 +194,13 @@ const ManageDestination = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Description (HTML allowed)</label>
           <textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
-            placeholder="Enter destination description"
+            placeholder="You can use HTML like <p>, <h1> etc."
             required
           />
         </div>
@@ -221,7 +233,7 @@ const ManageDestination = () => {
             <th>State</th>
             <th>Type</th>
             <th>Rating</th>
-            <th>Description</th> {/* ✅ Added */}
+            <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -239,7 +251,7 @@ const ManageDestination = () => {
               <td>{dest.state}</td>
               <td>{Array.isArray(dest.type) ? dest.type.join(', ') : dest.type}</td>
               <td>{dest.rating}</td>
-              <td>{dest.description}</td> {/* ✅ Added */}
+              <td dangerouslySetInnerHTML={{ __html: dest.description }}></td>
               <td>
                 <button onClick={() => handleEdit(dest)}>Edit</button>
                 <button onClick={() => handleDelete(dest.id)}>Delete</button>

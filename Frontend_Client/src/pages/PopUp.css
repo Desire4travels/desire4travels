@@ -1,156 +1,104 @@
 .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.4s ease;
-    z-index: 1000;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.popup-card {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.popup-form h2 {
+  margin-top: 0;
+}
+
+.popup-form input,
+.popup-form button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-form button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.popup-form button:hover {
+  background-color: #0056b3;
+}
+
+.popup-image {
+  margin-left: 2rem;
+  flex-shrink: 0;
+}
+
+.popup-image img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.popup-close-button:hover {
+  color: #000;
+  background: transparent;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
   .popup-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 900px;
-    display: flex;
-    overflow: hidden;
     flex-direction: column;
-    position: relative;
-  }
-  
-  @media (min-width: 768px) {
-    .popup-card {
-      flex-direction: row;
-    }
-  }
-  
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 25px;
-    height: 25px;
-    background: #0052cc;
-    color: white;
-    font-size: 16px;
-    line-height: 25px;
-    text-align: center;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    box-shadow: 0 4px 8px rgba(0, 82, 204, 0.4);
-  }
-  
-  .popup-close:hover {
-    background: #003580;
-  }
-  
-  .popup-form {
-    padding: 32px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #f3f8ff;
-  }
-  
-  .popup-form h2 {
-    margin-bottom: 24px;
-    font-size: 24px;
-    color: #003580;
-  }
-  
-  .popup-form input {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 18px;
-    border: 1.5px solid #0052cc;
-    border-radius: 10px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .popup-form input:focus {
-    border-color: #003580;
-    box-shadow: 0 0 6px #003580;
-  }
-  
-  .popup-form button {
-    width: 100%;
-    background: linear-gradient(to right, #0052cc, #007bff);
-    color: #fff;
-    padding: 16px;
-    font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 82, 204, 0.4);
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .popup-form .popup-cancel {
-    width: 100%;
-    background: #ff4d4f;
-    color: #fff;
-    padding: 16px;
-    font-size: 18px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 15px rgba(255, 77, 79, 0.4);
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
+    padding: 1rem;
     align-items: center;
   }
-  
-  .popup-form .popup-cancel:hover {
-    background: #d9363e;
-    box-shadow: 0 10px 20px rgba(255, 77, 79, 0.6);
-  }
-  
+
   .popup-image {
-    flex: 1;
-    display: none;
-    background: #e9f0ff;
+    margin-left: 0;
+    margin-top: 1rem;
   }
-  
-  @media (min-width: 768px) {
-    .popup-image {
-      display: block;
-    }
-  }
-  
+
   .popup-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
+    max-width: 300px;
+    height: auto;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+}

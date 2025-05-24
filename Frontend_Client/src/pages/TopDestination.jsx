@@ -32,7 +32,7 @@ const TopDestination = () => {
             <DestinationCard
               key={dest.id}
               imgSrc={`https://desire4travels-1.onrender.com/uploads/${dest.image}`}
-              title={`${dest.name} - ${dest.state}`}
+              title={dest.name}
               location={dest.state}
               tripType={dest.type}
               rating={parseFloat(dest.rating || 0).toFixed(1)}

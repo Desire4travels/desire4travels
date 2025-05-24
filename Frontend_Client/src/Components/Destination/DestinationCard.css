@@ -83,4 +83,8 @@
   .destination-card {
     width: 90vw;
   }
+  .destination-card {
+    width: 100%;
+    max-width: 150px; /* or whatever fits nicely side-by-side */
+  }
 }

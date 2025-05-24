@@ -14,6 +14,7 @@ import PackageCallback from './pages/callback/packageCallback.jsx';
 import DestinationCallback from './pages/callback/destinationCallback.jsx';
 import AdminUpcomingTrip from './pages/AdminUpcomingTrip.jsx';
 import CallUs from './pages/CallUs.jsx';
+import AdminPopupEnquiries from './pages/AdminPopupEnquiries.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/destinationCallback" element={<DestinationCallback />} />
         <Route path="/adminupcomingtrip" element={<AdminUpcomingTrip />} />
         <Route path="/contactUs" element={<CallUs/>} />
+        <Route path="/adminpopupenquiries" element={<AdminPopupEnquiries />} />
       </Routes>
     </div>
   );

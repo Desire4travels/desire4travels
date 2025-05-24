@@ -9,9 +9,14 @@
   
   .terms-title {
     text-align: center;
-    color: #2c3e50;
+    color: #fff;
+    background-color: #5B76D6;
+    padding: 12px 0;
+    font-size: 2rem;
+    border-radius: 6px;
     margin-bottom: 1.5rem;
   }
+  
   
   .terms-section {
     border: 1px solid #ddd;
@@ -64,6 +69,22 @@
   
   .terms-answer li::marker {
     font-weight: bold;
-    color: #000; /* Number color black for emphasis */
+    color: #000;
   }
+  
+  .terms-answer li.no-dot {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    text-indent: 0 !important;
+    position: relative;
+  }
+  
+  .terms-answer li.no-dot::marker,
+  .terms-answer li.no-dot::before {
+    content: none !important;
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  
   

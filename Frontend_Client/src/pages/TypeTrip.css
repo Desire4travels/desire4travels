@@ -47,3 +47,13 @@
   text-align: center;
   color: #333;
 }
+
+@media (max-width: 600px) {
+  .typetrip-box {
+    justify-content: center;
+  }
+
+  .typetripcard {
+    width: calc(50% - 10px); /* Two cards per row with some gap */
+  }
+}

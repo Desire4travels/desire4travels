@@ -8,7 +8,7 @@ const ContactUs = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/contact-us');
+      const response = await axios.get('https://desire4travels-1.onrender.com/contact-us');
       setContacts(response.data);
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -20,7 +20,7 @@ const ContactUs = () => {
   const deleteContact = async (id) => {
     if (window.confirm('Delete this contact?')) {
       try {
-        await axios.delete(`http://localhost:3000/contact-us/${id}`);
+        await axios.delete(`https://desire4travels-1.onrender.com/contact-us/${id}`);
         setContacts(prev => prev.filter(contact => contact.id !== id));
       } catch (error) {
         console.error('Error deleting contact:', error);

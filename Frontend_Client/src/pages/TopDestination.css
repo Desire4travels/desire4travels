@@ -17,10 +17,19 @@
 
 .topdestination-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
-  grid-template-columns: 1fr;
-  justify-items: center; /* Center cards on mobile */
+  justify-items: center;
 }
+
+
+@media (max-width: 639px) {
+  .topdestination-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 1rem;
+  }
+}
+
 
 @media (min-width: 640px) {
   .topdestination-grid {

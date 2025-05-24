@@ -103,11 +103,16 @@ const DestinationDetail = () => {
             src={`https://desire4travels-1.onrender.com/uploads/${destinationInfo.image}`}
             alt={destinationInfo.name}
             className="destination-image destination-image-desktop"
-            style={{ height: '300px'}}
+            style={{ height: "300px" }}
           />
           <div className="destination-description">
             <h1>{destinationInfo.name}</h1>
-            <p>{destinationInfo.description || "No description available."}</p>
+            <div
+              className="destination-description-text"
+              dangerouslySetInnerHTML={{
+                __html: destinationInfo.description || "No description available.",
+              }}
+            />
           </div>
         </div>
       )}
@@ -124,7 +129,7 @@ const DestinationDetail = () => {
               id={pkg.id}
               imgSrc={pkg.photo}
               packageName={pkg.packageName}
-              destinations={pkg.destinations.map(stripState)} 
+              destinations={pkg.destinations.map(stripState)}
               price={pkg.price}
               duration={pkg.duration}
             />

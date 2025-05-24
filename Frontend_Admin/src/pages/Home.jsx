@@ -50,6 +50,9 @@ const Home = () => {
       </div>
 
 
+      <div className="manage-popup-enquiries-card">
+        <h1><Link to="/adminpopupenquiries" className="link">Manage Popup Enquiries</Link></h1>
+      </div>
 
     </div>
 

@@ -52,7 +52,6 @@ const App = () => {
   const [heroCount, setHeroCount] = useState(0);
   const planTripRef = useRef(null);
   const location = useLocation();
-
   const [isPopupVisible, setIsPopupVisible] = useState(true);
 
   useEffect(() => {
@@ -89,7 +88,7 @@ const App = () => {
                   planTripRef={planTripRef}
                 />
                 <TopDestination />
-                {/* <UpcomingTrip /> */}
+                {/* <UpcomingTrip />*/}
                 <TypeTrip />
                 <Review />
                 <div ref={planTripRef}>
@@ -102,7 +101,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/plantrip" element={<PlanTrip />} />
-          {/* <Route path="/blogs" element={<BlogPage />} /> */}
+          {/*<Route path="/blogs" element={<BlogPage />} />*/}
           <Route path="/package" element={<Package />} />
           <Route path="/package/:packageId" element={<PackageDetails />} />
           <Route path="/about" element={<AboutUs />} />
@@ -115,11 +114,9 @@ const App = () => {
           <Route path="/blogs/:id" element={<BlogPost />} />
           <Route path="/blogs" element={<BlogList />} />
           <Route path="/terms" element={<TermandConditions />} />
-
         </Routes>
       </div>
-            <Tawk />
-
+      <Tawk />
       <Footer />
     </div>
   );

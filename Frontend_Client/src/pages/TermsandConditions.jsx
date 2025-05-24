@@ -61,11 +61,21 @@ const TermsAndConditions = () => {
           </div>
           {activeIndex === index && (
             <div className="terms-answer">
-              <ol>
+              <ul>
                 {section.answer.map((point, i) => (
-                  <li key={i}>{point}</li>
+                  <li
+                    key={i}
+                    className={
+                      point ===
+                      "The applicable refund amount will be credited within 15 days after the trip completion date."
+                        ? "no-dot"
+                        : ""
+                    }
+                  >
+                    {point}
+                  </li>
                 ))}
-              </ol>
+              </ul>
             </div>
           )}
         </div>

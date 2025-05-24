@@ -25,12 +25,16 @@ const Navbar = () => {
 
   return (
     <div className="nav">
-      <div className="nav-logo">Desire<span>4</span>Travels</div>
+      <div className="nav-header">
+        <div className="nav-logo">
+          <Link to="/">Desire<span>4</span>Travels</Link>
+        </div>
 
-      <div className="hamburger" onClick={toggleMenu}>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className="hamburger" onClick={toggleMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
 
       <div className={`nav-container ${menuOpen ? 'open' : ''}`}>
@@ -49,17 +53,8 @@ const Navbar = () => {
             </select>
           </li>
           <li><Link to="/package" className="nav-link" onClick={handleLinkClick}>Packages</Link></li>
-          <li><Link to="/contact" className="nav-link" onClick={handleLinkClick}>Contact</Link></li>
+          <li><Link to="/contact" className="nav-link" onClick={handleLinkClick}>Contact Us</Link></li>
         </ul>
-
-        {/*<ul className="nav-auth">
-          <li className='nav-login'>
-            <Link to="/login" className="nav-link" onClick={handleLinkClick}>
-              <p className='login'>Login</p>
-            </Link>
-          </li>
-          <li><Link to="/signup" className="nav-link" onClick={handleLinkClick}>Signup</Link></li>
-        </ul>*/}
       </div>
     </div>
   );
